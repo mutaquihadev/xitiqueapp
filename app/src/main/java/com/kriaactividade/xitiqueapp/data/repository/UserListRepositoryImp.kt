@@ -8,6 +8,7 @@ import com.kriaactividade.xitiqueapp.helpers.LoadingState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
+import java.util.*
 import javax.inject.Inject
 
 class UserListRepositoryImp @Inject constructor(private val database: FirebaseFirestore) :
@@ -20,7 +21,7 @@ class UserListRepositoryImp @Inject constructor(private val database: FirebaseFi
             UserEntity(
                 fullname = user.fullname,
                 balance = user.balance,
-                birthday = user.birthday
+                birthday = Date(user.birthday)
             )
         }
         val userListSorted = userEntity.sortedBy {

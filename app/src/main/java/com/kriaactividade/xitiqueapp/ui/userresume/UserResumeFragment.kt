@@ -22,18 +22,21 @@ class UserResumeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-       binding = FragmentUserResumeBinding.inflate(layoutInflater)
+        binding = FragmentUserResumeBinding.inflate(layoutInflater)
 
         lifecycleScope.launch {
-            viewModel.uiState.collect{
-                it.forEach {balance ->
-                    binding.valueForYear.text = balance.balanceForYear
-                    binding.valueCurrentEvent.text = balance.currentBalance
-                    binding.valueNextEvent.text = balance.nextBalance
-                    binding.progress.max = balance.percentForTotal
-                    binding.progress.setProgress(balance.percentCurrent,true)
-                    binding.totalProgress.text = "R$ ${balance.percentCurrent} / ${balance.balanceForYear}"
-                    binding.progressPercent.text = "${balance.percent} %"
+            viewModel.uiState.collect {
+                it.forEach { balance ->
+                    binding.apply {
+                        valueForYear.text = balance.balanceForYear
+                        valueCurrentEvent.text = balance.currentBalance
+                        valueNextEvent.text = balance.nextBalance
+                        progress.max = balance.percentForTotal
+                        progress.setProgress(balance.percentCurrent, true)
+                        totalProgress.text =
+                            "R$ ${balance.percentCurrent} / ${balance.balanceForYear}"
+                        progressPercent.text = "${balance.percent} %"
+                    }
                 }
             }
         }

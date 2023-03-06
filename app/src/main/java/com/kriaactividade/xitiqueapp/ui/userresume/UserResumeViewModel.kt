@@ -37,7 +37,7 @@ class UserResumeViewModel @Inject constructor(private val repository: UserListRe
         when (state) {
             is DataState.Data -> {
                 val listBalance = mutableListOf<BalanceTotal>()
-                val today = Calendar.getInstance().time.time
+                val today = Calendar.getInstance().time
 
                 var valueCurrentEvent = 0
                 var valueNextEvent = 0
