@@ -2,5 +2,5 @@
     <string name="app_name">xitiqueapp</string>
     <string name="title_user_list">User list</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_payment">Payment</string>
 </resources>
