@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "73915929332",
+    "project_id": "meu-xitique",
+    "storage_bucket": "meu-xitique.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:73915929332:android:19fd00131e19a61e7904a1",
+        "android_client_info": {
+          "package_name": "com.kriaactividade.xitiqueapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "73915929332-ngrd1maep8rmlr9q74phn4949i9nmctj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuax_KZN8LNzOGnr6sglg8aXbnj-PsvjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "73915929332-ngrd1maep8rmlr9q74phn4949i9nmctj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
