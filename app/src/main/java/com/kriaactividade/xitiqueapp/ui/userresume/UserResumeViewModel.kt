@@ -39,39 +39,19 @@ class UserResumeViewModel @Inject constructor(private val repository: UserListRe
                 val listBalance = mutableListOf<BalanceTotal>()
                 val today = Calendar.getInstance().time
 
-                var valueCurrentEvent = 0
-                var valueNextEvent = 0
-                var valueForYear = 0
-                var valueTotal = 0
-                var count = 0
-                var countForNextEvent = 0
-                var countForBalanceInMonth = 0
-
-                state.data.forEach { user ->
-                    valueForYear = state.data.size * VALUE_DEFAULT
-                    if (user.birthday.isSameMonth(today)) {
-                        count++
-                        valueCurrentEvent = count * VALUE_DEFAULT
-                    }
-                    if (user.birthday.isNextMonth(today)) {
-                        countForNextEvent ++
-                        valueNextEvent = countForNextEvent * VALUE_DEFAULT
-                    }
-                    if (user.birthday.isBalanceInMonth(today)) {
-                        countForBalanceInMonth ++
-                        valueTotal = countForBalanceInMonth * VALUE_DEFAULT
-                    }
-
-                }
+                val currentValue = state.data.filter { it.birthday.isSameMonth(today) }.size * VALUE_DEFAULT
+                val nextValue = state.data.filter { it.birthday.isNextMonth(today) }.size * VALUE_DEFAULT
+                val balanceForMonth = state.data.filter { it.birthday.isBalanceInMonth(today) }.size * VALUE_DEFAULT
+                val totalOfYear = state.data.size * VALUE_DEFAULT
 
                 listBalance.add(
                     BalanceTotal(
-                        currentBalance = "R$ $valueCurrentEvent",
-                        nextBalance = "R$ $valueNextEvent",
-                        balanceForYear = "R$ $valueForYear",
-                        percentForTotal = valueForYear,
-                        percentCurrent = valueTotal,
-                        percent = valueTotal /100
+                        currentBalance = "R$ $currentValue",
+                        nextBalance = "R$ $nextValue",
+                        balanceForYear = "R$ $totalOfYear",
+                        percentForTotal = balanceForMonth,
+                        percentCurrent = balanceForMonth,
+                        percent = balanceForMonth /100
                     )
                 )
                 _uiState.value = listBalance
