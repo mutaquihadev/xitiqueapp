@@ -53,7 +53,7 @@ class UserResumeViewModel @Inject constructor(private val repository: UserListRe
                 val currentValue =
                     state.data.filter { it.birthday.isSameMonth(today) }.size * VALUE_DEFAULT
                 val nextValue =
-                    state.data.filter { it.birthday.isNextsMonths(today) }.size * VALUE_DEFAULT
+                    state.data.filter { it.birthday.isNextMonth(today) }.size * VALUE_DEFAULT
                 val balanceForMonth =
                     state.data.filter { it.birthday.isBalanceInMonth(today) }.size * VALUE_DEFAULT
                 val totalOfYear = state.data.size * VALUE_DEFAULT
@@ -78,7 +78,6 @@ class UserResumeViewModel @Inject constructor(private val repository: UserListRe
                     it.value.forEach {user ->
                         if(user.birthday.isSameMonth(today)){
                             listUserSameMonth.add(UserEntity(fullname = user.fullname, birthday = user.birthday, balance = user.balance))
-                            _uiState.value = UserResumeUiState.Success(uiData = UserResumeUiData(listUserEntity = listUserSameMonth))
                         }
                         if (user.birthday.isNextMonth(today)){
                             listUserNextMonth.add(UserEntity(fullname = user.fullname, birthday = user.birthday, balance = user.balance))

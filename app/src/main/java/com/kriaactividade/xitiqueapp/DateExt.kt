@@ -41,19 +41,6 @@ fun Date.isNextMonth(valueDate: Date): Boolean {
     return monthInserted == monthCurrent + 1
 }
 
-fun Date.isNextsMonths(valueDate: Date): Boolean {
-    val dateInserted = Date(this.time)
-    val calendar = Calendar.getInstance()
-    calendar.time = dateInserted
-    val monthInserted = calendar.get(Calendar.MONTH)
-
-    val dateCurrent = Date(valueDate.time)
-    calendar.time = dateCurrent
-    val monthCurrent = calendar.get(Calendar.MONTH)
-
-    return monthInserted > monthCurrent
-}
-
 fun Date.isBalanceInMonth(valueDate: Date): Boolean {
     val dateInserted = Date(this.time)
     val calendar = Calendar.getInstance()
